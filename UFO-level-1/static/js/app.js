@@ -1,7 +1,7 @@
-// from data.js
+// Assign the data from `data.js` to a descriptive variable
 var tableData = data;
 
-// YOUR CODE HERE!
+// Get a reference to the table body
 var tbody = d3.select("tbody");
 console.log(tableData);
 
@@ -26,7 +26,7 @@ tableData.forEach((sightingDetails) => {
 });
 
 
-
+// Custom Filtering date/time column and display. 
 // Select the button
 var button = d3.select("#filter-btn");
 
@@ -39,6 +39,8 @@ form.on("submit",runFilter);
 
 // Complete the event handler function for the form
 function runFilter() {
+
+    //  Reset the table contents
     tbody.html("");
 
     // Prevent the page from refreshing
@@ -50,10 +52,11 @@ function runFilter() {
     // Get the value property of the input element
     var dateTime = inputDateTime.property("value");
   
-    // Use the form input to filter the data by blood type
+    // Use the form input to filter the data by date/time of UFo sightings
     var filteredData = tableData.filter(ufo => ufo.datetime == dateTime);
     console.log(filteredData);
-  
+   
+    // Loop through filtered data and console.log each UFO sighting data object.
     filteredData.forEach((filtered) => {
         console.log(filtered);
     
